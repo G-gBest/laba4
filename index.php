@@ -13,7 +13,7 @@
         <?php
         if(isset($_POST['file_name'])) {
             $file_name = $_POST['file_name'];
-            $f_open = fopen("$file_name", "r") or die("Невозможно открыть файл!");
+            $f_open = fopen("$file_name", "r") or die("Такого файла не существует");
             $f_body = fread($f_open, filesize("$file_name"));
             if (isset($_POST['edited_text'])){
                 echo "<h2>Содержимое файла</h2>" . $_POST['edited_text'];
@@ -37,7 +37,7 @@
         if(isset($_POST['edited_text'])) {
             $edited_text = $_POST['edited_text'];
             $file_name = $_POST['file_name'];
-            $f_open = fopen("$file_name", "w") or die("Невозможно открыть файл!");
+            $f_open = fopen("$file_name", "w") or die("Такого файла не существует");
             fwrite($f_open, $edited_text);
             fclose($f_open);
         }
